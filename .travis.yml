@@ -1,0 +1,15 @@
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t simplicissimus/nodejs_app .
+      - docker images
+      - docker tag simplicissimus/nodejs_app:travis
+      - docker push simplicissimus/nodejs_app:travis
+    - stage: test
+      script: docker run --rm simplicissimus/nodejs_app:travis cat Jenkinsfile
+    - script: docker run --rm simplicissimus/nodejs_app:travis cat Jenkinsfile
+    

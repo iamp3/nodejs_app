@@ -10,6 +10,6 @@ jobs:
       - docker tag simplicissimus/nodejs_app:latest simplicissimus/nodejs_app:travis
       - docker push simplicissimus/nodejs_app:travis
     - stage: test
-      script: docker run --rm simplicissimus/nodejs_app:travis cat Jenkinsfile
-    - script: docker run --rm simplicissimus/nodejs_app:travis cat Jenkinsfile
+      script: docker run --rm simplicissimus/nodejs_app:travis cat package.json
+    - script: docker run --rm simplicissimus/nodejs_app:travis cat package.json
     

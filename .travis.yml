@@ -9,7 +9,8 @@ jobs:
       - docker images
       - docker tag simplicissimus/nodejs_app:latest simplicissimus/nodejs_app:travis
       - docker push simplicissimus/nodejs_app:travis
-    - stage: test
-      script: docker run --rm simplicissimus/nodejs_app:travis echo "ping"
-    - script: docker run --rm simplicissimus/nodejs_app:travis cat package.json
-    
+    - stage: deploy
+      script: 
+      - echo "$lod" > lod.pem 
+      - ssh -i "lod.pem" -o "StrictHostKeyChecking no" ubuntu@ec2-52-91-140-250.compute-1.amazonaws.com
+      - echo "ping me" > test.txt 

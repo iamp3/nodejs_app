@@ -12,4 +12,5 @@ jobs:
     - stage: deploy
       script: 
       - echo "$lod" > lod.pem 
-      - ssh -i "lod.pem" -o "StrictHostKeyChecking no" ubuntu@ec2-3-83-11-158.compute-1.amazonaws.com date
+      - ssh -i "lod.pem" -o "StrictHostKeyChecking no" ubuntu@ec2-3-83-11-158.compute-1.amazonaws.com exit
+      - echo $?

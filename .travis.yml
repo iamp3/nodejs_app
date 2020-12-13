@@ -1,4 +1,4 @@
-dist: trusty
+dist: focal
 
 jobs:
   include:
@@ -11,7 +11,6 @@ jobs:
       - docker push simplicissimus/nodejs_app:travis
     - stage: deploy
       script:
-      - sudo apt update && sudo apt install openssl
       - openssl version
       - openssl aes-256-cbc -pass "pass:$secret" -in ./my_key.enc -out ./my_key -d -a
       - eval "$(ssh-agent -s)"
